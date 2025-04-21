@@ -25,9 +25,10 @@ class RegistroForm(FlaskForm):
 def registrar():
     form = RegistroForm()
     if form.validate_on_submit():
-        flash("Usuario registrado correctamente ✅")
+        flash("Usuario registrado correctamente")
         return redirect('/')
     return render_template('register.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
