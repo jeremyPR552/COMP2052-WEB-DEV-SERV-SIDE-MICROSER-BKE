@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+<body>
+    <h2>Registro de Usuario</h2>
+
+    {% with msgs = get_flashed_messages() %}
+      {% if msgs %}
+        <p style="color:green;">s{{ msgs[0] }}</p>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.nombre.label }}<br>
+            {{ form.nombre() }}<br>
+            {% for error in form.nombre.errors %}
+              <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.correo.label }}<br>
+            {{ form.correo() }}<br>
+            {% for error in form.correo.errors %}
+              <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.contraseña.label }}<br>
+            {{ form.contraseña() }}<br>
+            {% for error in form.contraseña.errors %}
+              <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
+

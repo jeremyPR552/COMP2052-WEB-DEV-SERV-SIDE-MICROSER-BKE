@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ejercicios</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Músculo trabajado</th>
+            <th>Nivel</th>
+        </tr>
+        {% for ejercicio in ejercicios %}
+        <tr>
+            <td>{{ ejercicio.nombre }}</td>
+            <td>{{ ejercicio.musculo }}</td>
+            <td>{{ ejercicio.nivel }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

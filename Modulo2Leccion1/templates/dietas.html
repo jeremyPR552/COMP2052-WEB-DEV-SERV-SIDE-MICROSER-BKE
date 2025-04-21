@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dietas</h1>
+    <table>
+        <tr>
+            <th>Tipo</th>
+            <th>Calorías</th>
+            <th>Descripción</th>
+        </tr>
+        {% for dieta in dietas %}
+        <tr>
+            <td>{{ dieta.tipo }}</td>
+            <td>{{ dieta.calorias }}</td>
+            <td>{{ dieta.descripcion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
