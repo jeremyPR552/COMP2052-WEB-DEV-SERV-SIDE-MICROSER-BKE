@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
 
 app = Flask(__name__)
-app.secret_key = 'secreto'  # Requerido por Flask-WTF
+app.secret_key = 'secreto' 
 
 class RegistroForm(FlaskForm):
     nombre = StringField('Nombre', validators=[

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    {% if session.get('user') %}
+        <p>Sesión iniciada como: {{ session.get('user') }}</p>
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a><br>
+        <a href="{{ url_for('admin_page') }}">Página Admin</a><br>
+        <a href="{{ url_for('user_page') }}">Página Usuario</a>
+    {% else %}
+        <p>No has iniciado sesión.</p>
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+    {% endif %}
+</body>
+</html>
