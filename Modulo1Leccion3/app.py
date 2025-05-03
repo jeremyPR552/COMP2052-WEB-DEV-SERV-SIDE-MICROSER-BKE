@@ -8,7 +8,7 @@ usuarios = []
 # Ruta GET /info
 @app.route('/info', methods=['GET'])
 def info():
-    return jsonify({"sistema": "Gestion de usuarios y productos"})
+    return jsonify({"Informacion": "Informacion general"})
 
 # Ruta POST /crear_usuario
 @app.route('/crear_usuario', methods=['POST'])

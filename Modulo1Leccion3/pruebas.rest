@@ -5,8 +5,8 @@ POST http://localhost:5000/crear_usuario
 Content-Type: application/json
 
 {
-  "nombre": "Carlos",
-  "correo": "carlos@example.com"
+  "nombre": "Juan",
+  "correo": "juan@ejemplo.com"
 }
 
 ###
