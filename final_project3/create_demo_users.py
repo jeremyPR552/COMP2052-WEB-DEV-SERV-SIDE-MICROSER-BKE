@@ -1,22 +1,20 @@
 from app import create_app, db
 from app.models import Role, User
-from werkzeug.security import generate_password_hash
 
 app = create_app()
 
 with app.app_context():
-    # Asegurarse de que los roles existen
-    roles = ['Admin', 'Organizador', 'Participante']
+    # Definir roles en inglés para consistencia
+    roles = ['Admin', 'Organizer', 'Participant']
     for role_name in roles:
         existing_role = Role.query.filter_by(name=role_name).first()
         if not existing_role:
             new_role = Role(name=role_name)
             db.session.add(new_role)
-            print(f'✅ Rol "{role_name}" creado.')
+            print(f'✅ Role "{role_name}" created.')
 
     db.session.commit()
 
-    # Diccionario con usuarios a insertar
     users_data = [
         {
             "username": "Administrator",
@@ -25,16 +23,16 @@ with app.app_context():
             "role_name": "Admin"
         },
         {
-            "username": "John Doe",
-            "email": "org@example.com",
-            "password": "org123",
-            "role_name": "Organizador"
+            "username": "John Organizer",
+            "email": "organizer@example.com",
+            "password": "organizer123",
+            "role_name": "Organizer"
         },
         {
-            "username": "Steve Jobs",
-            "email": "participante@example.com",
-            "password": "participante123",
-            "role_name": "Participante"
+            "username": "Maria Participant",
+            "email": "participant@example.com",
+            "password": "participant123",
+            "role_name": "Participant"
         }
     ]
 
@@ -47,11 +45,11 @@ with app.app_context():
                 email=user_info['email'],
                 role=role
             )
-            user.set_password(user_info['password'])  # Genera hash seguro
+            user.set_password(user_info['password'])  # Método definido en tu modelo
             db.session.add(user)
-            print(f'✅ Usuario "{user.username}" creado con rol "{role.name}".')
+            print(f'✅ User "{user.username}" created with role "{role.name}".')
         else:
-            print(f'ℹ️ El usuario con email {user_info["email"]} ya existe.')
+            print(f'ℹ️ User with email {user_info["email"]} already exists.')
 
     db.session.commit()
-    print("✅ Todos los usuarios fueron procesados correctamente.")
+    print("✅ All users processed successfully.")
